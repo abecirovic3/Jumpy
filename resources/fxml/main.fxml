@@ -3,19 +3,43 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ButtonBar buttonMinWidth="32.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button alignment="CENTER" maxHeight="32.0" maxWidth="49.0" minHeight="32.0" minWidth="49.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" />
-        </buttons>
-      </ButtonBar>
-      <Button minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="EASY" textAlignment="CENTER" />
-      <Button layoutX="182.0" layoutY="60.0" minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="NORMAL" textAlignment="CENTER" />
-      <Button layoutX="182.0" layoutY="129.0" minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="HARD" textAlignment="CENTER" />
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="EASY" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="182.0" layoutY="60.0" minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="NORMAL" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="182.0" layoutY="129.0" minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="HARD" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
    <padding>
-      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      <Insets bottom="20.0" left="20.0" right="20.0" top="5.0" />
    </padding>
 </VBox>
