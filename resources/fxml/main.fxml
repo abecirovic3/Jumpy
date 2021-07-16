@@ -26,15 +26,15 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="EASY" textAlignment="CENTER">
+      <Button fx:id="btnEasy" minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="EASY" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutX="182.0" layoutY="60.0" minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="NORMAL" textAlignment="CENTER">
+      <Button fx:id="btnNormal" layoutX="182.0" layoutY="60.0" minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="NORMAL" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutX="182.0" layoutY="129.0" minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="HARD" textAlignment="CENTER">
+      <Button fx:id="btnHard" layoutX="182.0" layoutY="129.0" minHeight="64.0" minWidth="256.0" mnemonicParsing="false" onAction="#startGameAction" prefHeight="64.0" prefWidth="256.0" text="HARD" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font></Button>

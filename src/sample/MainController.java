@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,7 +14,9 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class MainController {
     public void startGameAction(ActionEvent actionEvent) {
-        GameController ctrl = new GameController();
+        Difficulty difficulty = determineGameDifficulty(((Button) actionEvent.getSource()).getId());
+
+        GameController ctrl = new GameController(difficulty);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
         loader.setController(ctrl);
@@ -33,5 +36,15 @@ public class MainController {
         Node node = (Node) actionEvent.getSource();
         Stage currStage = (Stage) node.getScene().getWindow();
         currStage.close();
+    }
+
+    private Difficulty determineGameDifficulty(String btnId) {
+        Difficulty difficulty = Difficulty.EASY;
+        if (btnId.equals("btnNormal"))
+            difficulty = Difficulty.NORMAL;
+        else if (btnId.equals("btnHard"))
+            difficulty = Difficulty.HARD;
+
+        return difficulty;
     }
 }
