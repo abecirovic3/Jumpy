@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.IOException;
 
@@ -18,10 +20,32 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class GameController {
     public GridPane gameGrid;
-    Difficulty difficulty;
+
+    private Difficulty difficulty;
+
+    private byte activeRow = 0, activeColumn = 0;
+    private boolean firstAction = true;
+    private boolean gameEnded = false;
+
+    private GameModel model;
+
+    private Button[][] gameGridButtons;
+    private byte numberOfColumns = 4, numberOfRows = 5;
 
     public GameController(Difficulty difficulty) {
         this.difficulty = difficulty;
+
+        model = new GameModel();
+        for(int i=0; i<4; i++) {
+            model.getInputList()[i] = -1;
+        }
+
+        if (difficulty == Difficulty.EASY)
+            numberOfRows = 7;
+        else if (difficulty == Difficulty.NORMAL)
+            numberOfRows = 6;
+
+        gameGridButtons = new Button[numberOfRows][numberOfColumns];
     }
 
     @FXML
@@ -33,6 +57,52 @@ public class GameController {
             addRowToGameGrid();
             addRowToGameGrid();
         }
+
+        initializeGameGridButtons();
+    }
+
+    private void initializeGameGridButtons() {
+        ObservableList<Node> children = gameGrid.getChildren();
+
+        for (Node node : children) {
+            Integer row = GridPane.getRowIndex(node);
+            Integer column = GridPane.getColumnIndex(node);
+
+            if (row == null)
+                row = 0;
+            if (column == null)
+                column = 0;
+
+            if (row < numberOfRows && column < numberOfColumns)
+                gameGridButtons[row][column] = (Button) node;
+        }
+    }
+
+    public void inputAction(ActionEvent actionEvent) {
+        Pair<Integer, String> identifier = decodePressedButton(((Button)actionEvent.getSource()).getId());
+        model.getInputList()[activeColumn] = identifier.getKey().byteValue();
+        gameGridButtons[activeRow][activeColumn].setStyle("-fx-background-image: url(\"" +
+                identifier.getValue() + "\");");
+        activeColumn++;
+        if (activeColumn == numberOfColumns) {
+            // We should show the confirm button...
+        }
+    }
+
+    private Pair<Integer, String> decodePressedButton(String buttonId) {
+        Pair<Integer, String> identifier = new Pair<>(1, "/img/cat.png");
+        if (buttonId.equals("btnDog"))
+            identifier = new Pair<>(2, "/img/dog.png");
+        else if (buttonId.equals("btnFox"))
+            identifier = new Pair<>(3, "/img/fox.png");
+        else if (buttonId.equals("btnLion"))
+            identifier = new Pair<>(4, "/img/lion.png");
+        else if (buttonId.equals("btnMonkey"))
+            identifier = new Pair<>(5, "/img/monkey.png");
+        else if (buttonId.equals("btnPanda"))
+            identifier = new Pair<>(6, "/img/panda.png");
+
+        return identifier;
     }
 
     private void addRowToGameGrid() {
