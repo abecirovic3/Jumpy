@@ -1,0 +1,23 @@
+#btnDog {
+    -fx-background-image: url("/img/dog.png");
+}
+
+#btnCat {
+    -fx-background-image: url("/img/cat.png");
+}
+
+#btnFox {
+    -fx-background-image: url("/img/fox.png");
+}
+
+#btnLion {
+    -fx-background-image: url("/img/lion.png");
+}
+
+#btnMonkey {
+    -fx-background-image: url("/img/monkey.png");
+}
+
+#btnPanda {
+    -fx-background-image: url("/img/panda.png");
+}

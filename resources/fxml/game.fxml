@@ -150,14 +150,14 @@
             <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <HBox alignment="CENTER" minHeight="64.0" prefHeight="64.0" prefWidth="200.0" spacing="5.0">
+      <HBox alignment="CENTER" minHeight="64.0" prefHeight="64.0" prefWidth="200.0" spacing="7.0">
          <children>
-          <Button minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="1" />
-            <Button minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="2" />
-            <Button minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="3" />
-            <Button minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="4" />
-            <Button minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="5" />
-            <Button minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="6" />
+          <Button fx:id="btnCat" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
+            <Button fx:id="btnDog" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
+            <Button fx:id="btnFox" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
+            <Button fx:id="btnLion" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
+            <Button fx:id="btnMonkey" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
+            <Button fx:id="btnPanda" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
          </children>
       </HBox>
       <HBox alignment="CENTER" minHeight="64.0" prefHeight="64.0" prefWidth="200.0" spacing="5.0">
