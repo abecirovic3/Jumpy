@@ -43,7 +43,7 @@
             <RowConstraints minHeight="64.0" prefHeight="64.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane alignment="CENTER" hgap="5.0" vgap="5.0" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <GridPane alignment="CENTER" hgap="5.0" vgap="5.0" visible="false" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -59,7 +59,7 @@
                   <Circle layoutX="38.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <GridPane alignment="CENTER" hgap="5.0" vgap="5.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <GridPane alignment="CENTER" hgap="5.0" vgap="5.0" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <columnConstraints>
                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -75,7 +75,7 @@
                   <Circle layoutX="38.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <GridPane alignment="CENTER" hgap="5.0" layoutX="331.0" layoutY="84.0" vgap="5.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="331.0" layoutY="84.0" vgap="5.0" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <columnConstraints>
                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -91,7 +91,7 @@
                   <Circle layoutX="38.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <GridPane alignment="CENTER" hgap="5.0" layoutX="35.0" layoutY="10.0" vgap="5.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="35.0" layoutY="10.0" vgap="5.0" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <columnConstraints>
                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -107,7 +107,7 @@
                   <Circle layoutX="38.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <GridPane alignment="CENTER" hgap="5.0" layoutX="35.0" layoutY="10.0" vgap="5.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <GridPane alignment="CENTER" hgap="5.0" layoutX="35.0" layoutY="10.0" vgap="5.0" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <columnConstraints>
                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

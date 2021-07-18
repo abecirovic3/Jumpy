@@ -32,6 +32,8 @@ public class GameController {
     private Button[][] gameGridButtons;
     private byte numberOfColumns = 4, numberOfRows = 5;
 
+    private Button[] confirmButtons;
+
     public GameController(Difficulty difficulty) {
         this.difficulty = difficulty;
 
@@ -46,6 +48,7 @@ public class GameController {
             numberOfRows = 6;
 
         gameGridButtons = new Button[numberOfRows][numberOfColumns];
+        confirmButtons = new Button[numberOfRows];
     }
 
     @FXML
@@ -75,6 +78,10 @@ public class GameController {
 
             if (row < numberOfRows && column < numberOfColumns)
                 gameGridButtons[row][column] = (Button) node;
+
+            if (node instanceof Button && column == numberOfColumns && row < numberOfRows) {
+                confirmButtons[row] = (Button) node;
+            }
         }
     }
 
@@ -85,7 +92,7 @@ public class GameController {
                 identifier.getValue() + "\");");
         activeColumn++;
         if (activeColumn == numberOfColumns) {
-            // We should show the confirm button...
+            confirmButtons[activeRow].setVisible(true);
         }
     }
 
@@ -131,6 +138,7 @@ public class GameController {
         grid.add(circ2, 1, 0);
         grid.add(circ3, 0, 1);
         grid.add(circ4, 1, 1);
+        grid.setVisible(false);
         return grid;
     }
 
