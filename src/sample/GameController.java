@@ -3,12 +3,12 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
@@ -27,21 +27,41 @@ public class GameController {
     @FXML
     public void initialize() {
         if (difficulty == Difficulty.NORMAL) {
-            updateGameGrid();
+            addRowToGameGrid();
         }
         else if (difficulty == Difficulty.EASY) {
-            updateGameGrid();
-            updateGameGrid();
+            addRowToGameGrid();
+            addRowToGameGrid();
         }
     }
 
-    private void updateGameGrid() {
+    private void addRowToGameGrid() {
         Button[] buttons = getButtons(4);
-        GameGuideMarker ggm = new GameGuideMarker();
-        gameGrid.addRow(gameGrid.getRowCount(), buttons[0], buttons[1], buttons[2], buttons[3], ggm.getGrid());
+        gameGrid.addRow(gameGrid.getRowCount(), buttons[0], buttons[1], buttons[2], buttons[3], getGameGuideGrid());
         Button confirmBtn = new Button();
         confirmBtn.setVisible(false);
         gameGrid.add(confirmBtn, gameGrid.getColumnCount() - 1,gameGrid.getRowCount() - 1);
+    }
+
+    private GridPane getGameGuideGrid() {
+        GridPane grid = new GridPane();
+        grid.setMinSize(64,64);
+        grid.setAlignment(Pos.CENTER);
+        grid.setVgap(5);
+        grid.setHgap(5);
+        Circle circ1 = new Circle();
+        Circle circ2 = new Circle();
+        Circle circ3 = new Circle();
+        Circle circ4 = new Circle();
+        circ1.setRadius(12);
+        circ2.setRadius(12);
+        circ3.setRadius(12);
+        circ4.setRadius(12);
+        grid.add(circ1, 0, 0);
+        grid.add(circ2, 1, 0);
+        grid.add(circ3, 0, 1);
+        grid.add(circ4, 1, 1);
+        return grid;
     }
 
     private Button[] getButtons(int numberOfInstances) {
