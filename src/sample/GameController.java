@@ -95,13 +95,16 @@ public class GameController {
     }
 
     public void inputAction(ActionEvent actionEvent) {
-        if (gameEnded) return;
+        if (gameEnded || activeColumn == numberOfColumns) return;
 
         Pair<Integer, String> identifier = decodePressedButton(((Button)actionEvent.getSource()).getId());
         model.getInputList()[activeColumn] = identifier.getKey().byteValue();
         gameGridButtons[activeRow][activeColumn].setStyle("-fx-background-image: url(\"" +
                 identifier.getValue() + "\");");
-        activeColumn++;
+
+        while (activeColumn < numberOfColumns && model.getInputList()[activeColumn] != -1)
+            activeColumn++;
+
         if (activeColumn == numberOfColumns) {
             confirmButtons[activeRow].setVisible(true);
         }
@@ -269,5 +272,22 @@ public class GameController {
                 column = 0;
             }
         }
+    }
+
+    public void recoverInputAction(ActionEvent actionEvent) {
+        if (gameEnded) return;
+        Button pressedButton = (Button) actionEvent.getSource();
+        pressedButton.setStyle(null);
+        clearInputListForPressedButton(pressedButton);
+    }
+
+    private void clearInputListForPressedButton(Button pressedButton) {
+        for (int i = 0; i < numberOfRows; i++)
+            for (int j = 0; j < numberOfColumns; j++)
+                if (gameGridButtons[i][j] == pressedButton) {
+                    model.getInputList()[j] = -1;
+                    if (j < activeColumn)
+                        activeColumn = (byte) j;
+                }
     }
 }
