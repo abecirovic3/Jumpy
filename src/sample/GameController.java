@@ -23,6 +23,7 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class GameController {
     public GridPane gameGrid;
+    public Button btnRestart;
 
     private Difficulty difficulty;
 
@@ -185,7 +186,7 @@ public class GameController {
         return buttons;
     }
 
-    public void changeDifficultyAction(ActionEvent actionEvent) {
+    public void goBackToMainMenu(ActionEvent actionEvent) {
         MainController ctrl = new MainController();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
@@ -203,8 +204,11 @@ public class GameController {
         stage.setResizable(false);
         stage.show();
 
-        Node node = (Node) actionEvent.getSource();
-        Stage currStage = (Stage) node.getScene().getWindow();
+        closeCurrentStage();
+    }
+
+    private void closeCurrentStage() {
+        Stage currStage = (Stage) gameGrid.getScene().getWindow();
         currStage.close();
     }
 
@@ -213,23 +217,18 @@ public class GameController {
         byte fullHits = result[0];
         byte halfHits = result[1];
 
-        // we need to show the game guide grid with coloured circles
-
         guideGrids[activeRow].setVisible(true);
         confirmButtons[activeRow].setVisible(false);
 
         fillGameGuideGridCircles(fullHits, halfHits);
 
-        // we need to clear the input array
-
         model.clearInputList();
-
-        // we need to check if the game has ended
 
         if (fullHits == 4) {
             gameEnded = true;
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.showAndWait();
+            goBackToMainMenu(new ActionEvent());
             return;
         }
 
@@ -240,6 +239,7 @@ public class GameController {
             gameEnded = true;
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.showAndWait();
+            btnRestart.setText("Play again");
         }
     }
 
@@ -309,8 +309,6 @@ public class GameController {
         stage.setResizable(false);
         stage.show();
 
-        Node node = (Node) actionEvent.getSource();
-        Stage currStage = (Stage) node.getScene().getWindow();
-        currStage.close();
+        closeCurrentStage();
     }
 }
