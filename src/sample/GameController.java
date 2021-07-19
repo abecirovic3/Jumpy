@@ -290,4 +290,27 @@ public class GameController {
             }
         }
     }
+
+    public void restartAction(ActionEvent actionEvent) {
+        GameController ctrl = new GameController(difficulty);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
+        loader.setController(ctrl);
+
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("Jumpy");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.show();
+
+        Node node = (Node) actionEvent.getSource();
+        Stage currStage = (Stage) node.getScene().getWindow();
+        currStage.close();
+    }
 }
