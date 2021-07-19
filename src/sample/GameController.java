@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Pair;
@@ -33,6 +34,7 @@ public class GameController {
     private byte numberOfColumns = 4, numberOfRows = 5;
 
     private Button[] confirmButtons;
+    private GridPane[] guideGrids;
 
     public GameController(Difficulty difficulty) {
         this.difficulty = difficulty;
@@ -49,6 +51,7 @@ public class GameController {
 
         gameGridButtons = new Button[numberOfRows][numberOfColumns];
         confirmButtons = new Button[numberOfRows];
+        guideGrids = new GridPane[numberOfRows];
     }
 
     @FXML
@@ -61,10 +64,10 @@ public class GameController {
             addRowToGameGrid();
         }
 
-        initializeGameGridButtons();
+        initializeGameGridNodes();
     }
 
-    private void initializeGameGridButtons() {
+    private void initializeGameGridNodes() {
         ObservableList<Node> children = gameGrid.getChildren();
 
         for (Node node : children) {
@@ -81,6 +84,10 @@ public class GameController {
 
             if (node instanceof Button && column == numberOfColumns && row < numberOfRows) {
                 confirmButtons[row] = (Button) node;
+            }
+
+            if (node instanceof GridPane && column == numberOfColumns && row < numberOfRows) {
+                guideGrids[row] = (GridPane) node;
             }
         }
     }
@@ -117,6 +124,7 @@ public class GameController {
         gameGrid.addRow(gameGrid.getRowCount(), buttons[0], buttons[1], buttons[2], buttons[3], getGameGuideGrid());
         Button confirmBtn = new Button();
         confirmBtn.setVisible(false);
+//        confirmBtn.setOnAction();
         gameGrid.add(confirmBtn, gameGrid.getColumnCount() - 1,gameGrid.getRowCount() - 1);
     }
 
@@ -148,6 +156,7 @@ public class GameController {
             buttons[i] = new Button();
             buttons[i].setPrefWidth(64);
             buttons[i].setPrefHeight(64);
+//            buttons[i].setOnAction();
         }
         return buttons;
     }
@@ -173,5 +182,57 @@ public class GameController {
         Node node = (Node) actionEvent.getSource();
         Stage currStage = (Stage) node.getScene().getWindow();
         currStage.close();
+    }
+
+    public void validateInputAction(ActionEvent actionEvent) {
+        byte[] result = model.validateInput();
+        byte fullHits = result[0];
+        byte halfHits = result[1];
+
+        // we need to show the game guide grid with coloured circles
+
+        guideGrids[activeRow].setVisible(true);
+        confirmButtons[activeRow].setVisible(false);
+
+        fillGameGuideGridCircles(fullHits, halfHits);
+
+        // we need to clear the input array
+
+        // we need to check if the game has ended
+    }
+
+    private void fillGameGuideGridCircles(byte fullHits, byte halfHits) {
+        ObservableList<Node> children = guideGrids[activeRow].getChildren();
+        Circle[][] circles = new Circle[2][2];
+
+        for (Node node : children) {
+            Integer row = GridPane.getRowIndex(node);
+            Integer column = GridPane.getColumnIndex(node);
+
+            if (row == null)
+                row = 0;
+            if (column == null)
+                column = 0;
+
+            circles[row][column] = (Circle) node;
+        }
+
+        int row = 0, column = 0;
+        for (byte i = 0; i < fullHits; i++) {
+            circles[row][column].setFill(Paint.valueOf("FF0000"));
+            column++;
+            if (column == 2) {
+                row++;
+                column = 0;
+            }
+        }
+        for (byte i = 0; i < halfHits; i++) {
+            circles[row][column].setFill(Paint.valueOf("00FF00"));
+            column++;
+            if (column == 2) {
+                row++;
+                column = 0;
+            }
+        }
     }
 }
