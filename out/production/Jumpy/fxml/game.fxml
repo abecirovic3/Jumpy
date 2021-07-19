@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox spacing="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="5.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
         <menus>
@@ -123,11 +123,11 @@
                   <Circle layoutX="38.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button layoutX="394.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button layoutX="10.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Button layoutX="10.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <Button layoutX="10.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" styleClass="confirm-button" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button layoutX="394.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" styleClass="confirm-button" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button layoutX="10.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" styleClass="confirm-button" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button layoutX="10.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" styleClass="confirm-button" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button layoutX="10.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" styleClass="confirm-button" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
             <Button alignment="CENTER" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" />
             <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="1" />
             <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="2" />
@@ -152,12 +152,12 @@
       </GridPane>
       <HBox alignment="CENTER" minHeight="64.0" prefHeight="64.0" prefWidth="200.0" spacing="7.0">
          <children>
-          <Button fx:id="btnCat" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
-            <Button fx:id="btnDog" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
-            <Button fx:id="btnFox" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
-            <Button fx:id="btnLion" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
-            <Button fx:id="btnMonkey" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
-            <Button fx:id="btnPanda" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" stylesheets="@../css/styles.css" />
+          <Button fx:id="btnCat" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" />
+            <Button fx:id="btnDog" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" />
+            <Button fx:id="btnFox" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" />
+            <Button fx:id="btnLion" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" />
+            <Button fx:id="btnMonkey" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" />
+            <Button fx:id="btnPanda" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" onAction="#inputAction" prefHeight="64.0" prefWidth="64.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER" minHeight="64.0" prefHeight="64.0" prefWidth="200.0" spacing="5.0">

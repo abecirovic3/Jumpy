@@ -21,3 +21,8 @@
 #btnPanda {
     -fx-background-image: url("/img/panda.png");
 }
+
+.confirm-button {
+    -fx-background-image: url("/img/confirmation.png");
+    -fx-background-color: Transparent;
+}

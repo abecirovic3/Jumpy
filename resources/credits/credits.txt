@@ -1,1 +1,2 @@
-https://www.flaticon.com/packs/animals-and-nature
+animals: https://www.flaticon.com/packs/animals-and-nature
+confirmation: https://www.flaticon.com/packs/ui-26

@@ -96,7 +96,7 @@ public class GameController {
 
     public void inputAction(ActionEvent actionEvent) {
         if (gameEnded) return;
-        
+
         Pair<Integer, String> identifier = decodePressedButton(((Button)actionEvent.getSource()).getId());
         model.getInputList()[activeColumn] = identifier.getKey().byteValue();
         gameGridButtons[activeRow][activeColumn].setStyle("-fx-background-image: url(\"" +
@@ -126,14 +126,23 @@ public class GameController {
     private void addRowToGameGrid() {
         Button[] buttons = getButtons(4);
         gameGrid.addRow(gameGrid.getRowCount(), buttons[0], buttons[1], buttons[2], buttons[3], getGameGuideGrid());
+        Button confirmBtn = getConfirmButton();
+        gameGrid.add(confirmBtn, gameGrid.getColumnCount() - 1,gameGrid.getRowCount() - 1);
+    }
+
+    private Button getConfirmButton() {
         Button confirmBtn = new Button();
         confirmBtn.setVisible(false);
+        confirmBtn.setPrefHeight(32);
+        confirmBtn.setPrefWidth(32);
+        confirmBtn.setStyle("-fx-background-image: url(\"/img/confirmation.png\");\n" +
+                "-fx-background-color: Transparent;");
         confirmBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 validateInputAction(e);
             }
         });
-        gameGrid.add(confirmBtn, gameGrid.getColumnCount() - 1,gameGrid.getRowCount() - 1);
+        return confirmBtn;
     }
 
     private GridPane getGameGuideGrid() {
