@@ -123,31 +123,31 @@
                   <Circle layoutX="38.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" onAction="#validateInputAction" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button layoutX="394.0" layoutY="29.0" mnemonicParsing="false" onAction="#validateInputAction" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-            <Button layoutX="10.0" layoutY="29.0" mnemonicParsing="false" onAction="#validateInputAction" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Button layoutX="10.0" layoutY="29.0" mnemonicParsing="false" onAction="#validateInputAction" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-            <Button layoutX="10.0" layoutY="29.0" mnemonicParsing="false" onAction="#validateInputAction" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-            <Button alignment="CENTER" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="00" />
-            <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="01" GridPane.columnIndex="1" />
-            <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="02" GridPane.columnIndex="2" />
-            <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="03" GridPane.columnIndex="3" />
-            <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="10" GridPane.rowIndex="1" />
-            <Button alignment="CENTER" layoutX="111.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="11" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button alignment="CENTER" layoutX="201.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="12" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button alignment="CENTER" layoutX="291.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="13" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="20" GridPane.rowIndex="2" />
-            <Button alignment="CENTER" layoutX="109.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="21" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button alignment="CENTER" layoutX="183.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="22" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button alignment="CENTER" layoutX="257.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="23" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button alignment="CENTER" layoutX="35.0" layoutY="84.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="30" GridPane.rowIndex="3" />
-            <Button alignment="CENTER" layoutX="109.0" layoutY="84.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="31" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button alignment="CENTER" layoutX="183.0" layoutY="84.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="32" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button alignment="CENTER" layoutX="257.0" layoutY="84.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="33" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="40" GridPane.rowIndex="4" />
-            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="41" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="42" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="43" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button layoutX="394.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button layoutX="10.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button layoutX="10.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button layoutX="10.0" layoutY="29.0" minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#validateInputAction" prefHeight="32.0" prefWidth="32.0" text="OK" visible="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button alignment="CENTER" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" />
+            <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="1" />
+            <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="2" />
+            <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="3" />
+            <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.rowIndex="1" />
+            <Button alignment="CENTER" layoutX="111.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button alignment="CENTER" layoutX="201.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button alignment="CENTER" layoutX="291.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" layoutX="109.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" layoutX="183.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" layoutX="257.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" layoutX="35.0" layoutY="84.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.rowIndex="3" />
+            <Button alignment="CENTER" layoutX="109.0" layoutY="84.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button alignment="CENTER" layoutX="183.0" layoutY="84.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button alignment="CENTER" layoutX="257.0" layoutY="84.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.rowIndex="4" />
+            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button alignment="CENTER" layoutX="35.0" layoutY="10.0" minHeight="64.0" minWidth="64.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <HBox alignment="CENTER" minHeight="64.0" prefHeight="64.0" prefWidth="200.0" spacing="7.0">

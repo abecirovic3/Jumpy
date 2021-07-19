@@ -59,4 +59,9 @@ public class GameModel {
 
         return result;
     }
+
+    public void clearInputList() {
+        for (int i = 0; i < 4; i++)
+            inputList[i] = -1;
+    }
 }

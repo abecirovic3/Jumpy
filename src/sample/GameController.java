@@ -2,12 +2,14 @@ package sample;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
@@ -93,6 +95,8 @@ public class GameController {
     }
 
     public void inputAction(ActionEvent actionEvent) {
+        if (gameEnded) return;
+        
         Pair<Integer, String> identifier = decodePressedButton(((Button)actionEvent.getSource()).getId());
         model.getInputList()[activeColumn] = identifier.getKey().byteValue();
         gameGridButtons[activeRow][activeColumn].setStyle("-fx-background-image: url(\"" +
@@ -124,7 +128,11 @@ public class GameController {
         gameGrid.addRow(gameGrid.getRowCount(), buttons[0], buttons[1], buttons[2], buttons[3], getGameGuideGrid());
         Button confirmBtn = new Button();
         confirmBtn.setVisible(false);
-//        confirmBtn.setOnAction();
+        confirmBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                validateInputAction(e);
+            }
+        });
         gameGrid.add(confirmBtn, gameGrid.getColumnCount() - 1,gameGrid.getRowCount() - 1);
     }
 
@@ -198,7 +206,25 @@ public class GameController {
 
         // we need to clear the input array
 
+        model.clearInputList();
+
         // we need to check if the game has ended
+
+        if (fullHits == 4) {
+            gameEnded = true;
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.showAndWait();
+            return;
+        }
+
+        activeRow++;
+        activeColumn = 0;
+
+        if (activeRow == numberOfRows) {
+            gameEnded = true;
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.showAndWait();
+        }
     }
 
     private void fillGameGuideGridCircles(byte fullHits, byte halfHits) {
