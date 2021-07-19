@@ -281,17 +281,13 @@ public class GameController {
     public void recoverInputAction(ActionEvent actionEvent) {
         if (gameEnded) return;
         Button pressedButton = (Button) actionEvent.getSource();
-        pressedButton.setStyle(null);
-        clearInputListForPressedButton(pressedButton);
-    }
-
-    private void clearInputListForPressedButton(Button pressedButton) {
-        for (int i = 0; i < numberOfRows; i++)
-            for (int j = 0; j < numberOfColumns; j++)
-                if (gameGridButtons[i][j] == pressedButton) {
-                    model.getInputList()[j] = -1;
-                    if (j < activeColumn)
-                        activeColumn = (byte) j;
-                }
+        for (int j = 0; j < numberOfColumns; j++) {
+            if (gameGridButtons[activeRow][j] == pressedButton) {
+                pressedButton.setStyle(null);
+                model.getInputList()[j] = -1;
+                if (j < activeColumn)
+                    activeColumn = (byte) j;
+            }
+        }
     }
 }
