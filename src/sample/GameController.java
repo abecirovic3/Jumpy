@@ -176,7 +176,11 @@ public class GameController {
             buttons[i] = new Button();
             buttons[i].setPrefWidth(64);
             buttons[i].setPrefHeight(64);
-//            buttons[i].setOnAction();
+            buttons[i].setOnAction(new EventHandler<ActionEvent>() {
+                @Override public void handle(ActionEvent e) {
+                    recoverInputAction(e);
+                }
+            });
         }
         return buttons;
     }
