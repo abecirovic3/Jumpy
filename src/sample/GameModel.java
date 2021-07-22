@@ -4,6 +4,8 @@ public class GameModel {
     private byte[] generatedList = new byte[4];
     private byte[] inputList = new byte[4];
 
+    private Difficulty difficulty;
+
     public GameModel() {
         generatedList = generateList();
     }
@@ -63,5 +65,13 @@ public class GameModel {
     public void clearInputList() {
         for (int i = 0; i < 4; i++)
             inputList[i] = -1;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }

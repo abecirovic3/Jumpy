@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -25,7 +26,7 @@ public class GameController {
     public GridPane gameGrid;
     public Button btnRestart;
 
-    private Difficulty difficulty;
+    //private Difficulty difficulty;
 
     private byte activeRow = 0, activeColumn = 0;
     private boolean firstAction = true;
@@ -40,12 +41,14 @@ public class GameController {
     private GridPane[] guideGrids;
 
     public GameController(Difficulty difficulty) {
-        this.difficulty = difficulty;
+        //this.difficulty = difficulty;
 
         model = new GameModel();
-        for(int i=0; i<4; i++) {
-            model.getInputList()[i] = -1;
-        }
+        model.setDifficulty(difficulty);
+//        for(int i=0; i<4; i++) {
+//            model.getInputList()[i] = -1;
+//        }
+        model.clearInputList();
 
         if (difficulty == Difficulty.EASY)
             numberOfRows = 7;
@@ -59,10 +62,10 @@ public class GameController {
 
     @FXML
     public void initialize() {
-        if (difficulty == Difficulty.NORMAL) {
+        if (model.getDifficulty() == Difficulty.NORMAL) {
             addRowToGameGrid();
         }
-        else if (difficulty == Difficulty.EASY) {
+        else if (model.getDifficulty() == Difficulty.EASY) {
             addRowToGameGrid();
             addRowToGameGrid();
         }
@@ -226,9 +229,9 @@ public class GameController {
 
         if (fullHits == 4) {
             gameEnded = true;
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.showAndWait();
-            goBackToMainMenu(new ActionEvent());
+            showEndAlert(true);
+            //goBackToMainMenu(new ActionEvent());
+            btnRestart.setText("Play again");
             return;
         }
 
@@ -237,10 +240,29 @@ public class GameController {
 
         if (activeRow == numberOfRows) {
             gameEnded = true;
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.showAndWait();
+            showEndAlert(false);
             btnRestart.setText("Play again");
         }
+    }
+
+    private void showEndAlert(boolean win) {
+        EndAlertController ctrl = new EndAlertController(win, model);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/endGameAlert.fxml"));
+        loader.setController(ctrl);
+
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        //stage.setTitle("End");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
 
     private void fillGameGuideGridCircles(byte fullHits, byte halfHits) {
@@ -292,7 +314,7 @@ public class GameController {
     }
 
     public void restartAction(ActionEvent actionEvent) {
-        GameController ctrl = new GameController(difficulty);
+        GameController ctrl = new GameController(model.getDifficulty());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
         loader.setController(ctrl);
