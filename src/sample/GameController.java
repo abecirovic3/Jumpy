@@ -258,7 +258,7 @@ public class GameController {
             e.printStackTrace();
         }
         Stage stage = new Stage();
-        //stage.setTitle("End");
+        stage.setTitle("End of game");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
