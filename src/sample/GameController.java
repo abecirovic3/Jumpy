@@ -330,6 +330,9 @@ public class GameController {
                 model.inputList[j] = -1;
                 if (j < model.activeColumn)
                     model.activeColumn = (byte) j;
+                if (confirmButtons[model.activeRow].isVisible())
+                    confirmButtons[model.activeRow].setVisible(false);
+                break;
             }
         }
     }
