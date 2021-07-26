@@ -162,7 +162,7 @@
       </HBox>
       <HBox alignment="CENTER" minHeight="64.0" prefHeight="64.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Label fx:id="timeLabel" alignment="TOP_LEFT" minWidth="133.0" prefWidth="133.0">
+            <Label fx:id="timeLabel" text="Time: 00:00:00" alignment="TOP_LEFT" minWidth="133.0" prefWidth="133.0">
                <font>
                   <Font size="14.0" />
                </font>

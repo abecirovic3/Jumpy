@@ -12,6 +12,8 @@ public class GameModel {
     public boolean firstAction = true;
     public boolean gameEnded = false;
 
+    public Stopwatch stopwatch = new Stopwatch();
+
     public static GameModel getInstance() {
         if (instance == null) instance = new GameModel();
         return instance;
@@ -67,10 +69,17 @@ public class GameModel {
             inputList[i] = -1;
     }
 
-    public void endGame() {
+    public void resetGameParameters() {
         activeRow = 0;
         activeColumn = 0;
         firstAction = true;
         gameEnded = false;
+    }
+
+    public void startGame(Difficulty difficulty) {
+        resetGameParameters();
+        generateList();
+        clearInputList();
+        this.difficulty = difficulty;
     }
 }

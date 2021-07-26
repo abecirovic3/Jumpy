@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -37,9 +39,7 @@ public class GameController {
 
     public GameController(Difficulty difficulty) {
         model = GameModel.getInstance();
-        model.generateList();
-        model.clearInputList();
-        model.difficulty = difficulty;
+        model.startGame(difficulty);
 
         if (difficulty == Difficulty.EASY)
             numberOfRows = 7;
@@ -92,34 +92,11 @@ public class GameController {
     public void inputAction(ActionEvent actionEvent) {
         if (model.gameEnded || model.activeColumn == numberOfColumns) return;
 
-//        if (firstAction) {
-//            // start stopwatch
-//            // and start the thread ??
-//            firstAction = false;
-//            Thread stopwatchThread = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    while(!Thread.interrupted()) {
-//                        System.out.println(timeLabel.getText());
-//                        Platform.runLater(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                timeLabel.setText(timeLabel.getText() + ".");
-//                            }
-//                        });
-//
-//                        try {
-//                            Thread.sleep(1000);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }
-//            });
-//
-//            stopwatchThread.start();
-//
-//        }
+        if (model.firstAction) {
+            model.firstAction = false;
+            model.stopwatch.start();
+            startStopwatchThread();
+        }
 
         Pair<Integer, String> identifier = decodePressedButton(((Button)actionEvent.getSource()).getId());
         model.inputList[model.activeColumn] = identifier.getKey().byteValue();
@@ -132,6 +109,31 @@ public class GameController {
         if (model.activeColumn == numberOfColumns) {
             confirmButtons[model.activeRow].setVisible(true);
         }
+    }
+
+    private void startStopwatchThread() {
+        Thread timeThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!model.gameEnded) {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            timeLabel.setText("Time: "
+                                    + model.stopwatch.getElapsedTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+//                            System.out.println(timeLabel.getText());
+                        }
+                    });
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        timeThread.start();
     }
 
     private Pair<Integer, String> decodePressedButton(String buttonId) {
@@ -232,7 +234,8 @@ public class GameController {
     }
 
     private void closeCurrentStage() {
-        model.endGame();
+        //model.resetGameParameters();
+        model.gameEnded = true;
         Stage currStage = (Stage) gameGrid.getScene().getWindow();
         currStage.close();
     }
@@ -250,6 +253,7 @@ public class GameController {
         model.clearInputList();
 
         if (fullHits == 4) {
+//            model.stopwatch.stop();
             model.gameEnded = true;
             showEndAlert(true);
             btnRestart.setText("Play again");
@@ -260,6 +264,7 @@ public class GameController {
         model.activeColumn = 0;
 
         if (model.activeRow == numberOfRows) {
+//            model.stopwatch.stop();
             model.gameEnded = true;
             showEndAlert(false);
             btnRestart.setText("Play again");
@@ -338,6 +343,14 @@ public class GameController {
     }
 
     public void restartAction(ActionEvent actionEvent) {
+        closeCurrentStage();
+        // need to find better way of stopping the stopwatch thread ^ˇ
+        try {
+            Thread.currentThread().sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         GameController ctrl = new GameController(model.difficulty);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
@@ -354,7 +367,9 @@ public class GameController {
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
         stage.show();
-
-        closeCurrentStage();
     }
+
+//    public void setTimeLabelText(String text) {
+//        timeLabel.setText(text);
+//    }
 }

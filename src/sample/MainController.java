@@ -31,7 +31,12 @@ public class MainController {
         stage.setTitle("Jumpy");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
-        // stage.setOnCloseRequest(e -> {});
+
+        GameModel m = GameModel.getInstance();
+        stage.setOnCloseRequest(e -> {
+            System.out.println("Closing...");
+            m.gameEnded = true; // we do this to stop the stopwatch thread in GameController
+        });
         stage.show();
 
         Node node = (Node) actionEvent.getSource();
