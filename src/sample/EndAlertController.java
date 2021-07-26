@@ -45,7 +45,7 @@ public class EndAlertController {
             // set rankings...
         }
 
-        labelDifficulty.setText(labelDifficulty.getText() + model.getDifficulty());
+        labelDifficulty.setText(labelDifficulty.getText() + model.difficulty);
     }
 
     private boolean timeIsInTop10() {
@@ -53,10 +53,10 @@ public class EndAlertController {
     }
 
     private void initializeCombinationImages() {
-        img1.setImage(new Image(getImgSource(model.getGeneratedList()[0])));
-        img2.setImage(new Image(getImgSource(model.getGeneratedList()[1])));
-        img3.setImage(new Image(getImgSource(model.getGeneratedList()[2])));
-        img4.setImage(new Image(getImgSource(model.getGeneratedList()[3])));
+        img1.setImage(new Image(getImgSource(model.generatedList[0])));
+        img2.setImage(new Image(getImgSource(model.generatedList[1])));
+        img3.setImage(new Image(getImgSource(model.generatedList[2])));
+        img4.setImage(new Image(getImgSource(model.generatedList[3])));
     }
 
     private String getImgSource(byte identifier) {

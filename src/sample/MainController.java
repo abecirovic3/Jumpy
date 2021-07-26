@@ -31,6 +31,7 @@ public class MainController {
         stage.setTitle("Jumpy");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
+        // stage.setOnCloseRequest(e -> {});
         stage.show();
 
         Node node = (Node) actionEvent.getSource();

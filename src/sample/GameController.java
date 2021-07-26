@@ -9,8 +9,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -25,12 +25,7 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class GameController {
     public GridPane gameGrid;
     public Button btnRestart;
-
-    //private Difficulty difficulty;
-
-    private byte activeRow = 0, activeColumn = 0;
-    private boolean firstAction = true;
-    private boolean gameEnded = false;
+    public Label timeLabel;
 
     private GameModel model;
 
@@ -41,14 +36,10 @@ public class GameController {
     private GridPane[] guideGrids;
 
     public GameController(Difficulty difficulty) {
-        //this.difficulty = difficulty;
-
-        model = new GameModel();
-        model.setDifficulty(difficulty);
-//        for(int i=0; i<4; i++) {
-//            model.getInputList()[i] = -1;
-//        }
+        model = GameModel.getInstance();
+        model.generateList();
         model.clearInputList();
+        model.difficulty = difficulty;
 
         if (difficulty == Difficulty.EASY)
             numberOfRows = 7;
@@ -62,10 +53,10 @@ public class GameController {
 
     @FXML
     public void initialize() {
-        if (model.getDifficulty() == Difficulty.NORMAL) {
+        if (model.difficulty == Difficulty.NORMAL) {
             addRowToGameGrid();
         }
-        else if (model.getDifficulty() == Difficulty.EASY) {
+        else if (model.difficulty == Difficulty.EASY) {
             addRowToGameGrid();
             addRowToGameGrid();
         }
@@ -99,18 +90,47 @@ public class GameController {
     }
 
     public void inputAction(ActionEvent actionEvent) {
-        if (gameEnded || activeColumn == numberOfColumns) return;
+        if (model.gameEnded || model.activeColumn == numberOfColumns) return;
+
+//        if (firstAction) {
+//            // start stopwatch
+//            // and start the thread ??
+//            firstAction = false;
+//            Thread stopwatchThread = new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    while(!Thread.interrupted()) {
+//                        System.out.println(timeLabel.getText());
+//                        Platform.runLater(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                timeLabel.setText(timeLabel.getText() + ".");
+//                            }
+//                        });
+//
+//                        try {
+//                            Thread.sleep(1000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//            });
+//
+//            stopwatchThread.start();
+//
+//        }
 
         Pair<Integer, String> identifier = decodePressedButton(((Button)actionEvent.getSource()).getId());
-        model.getInputList()[activeColumn] = identifier.getKey().byteValue();
-        gameGridButtons[activeRow][activeColumn].setStyle("-fx-background-image: url(\"" +
+        model.inputList[model.activeColumn] = identifier.getKey().byteValue();
+        gameGridButtons[model.activeRow][model.activeColumn].setStyle("-fx-background-image: url(\"" +
                 identifier.getValue() + "\");");
 
-        while (activeColumn < numberOfColumns && model.getInputList()[activeColumn] != -1)
-            activeColumn++;
+        while (model.activeColumn < numberOfColumns && model.inputList[model.activeColumn] != -1)
+            model.activeColumn++;
 
-        if (activeColumn == numberOfColumns) {
-            confirmButtons[activeRow].setVisible(true);
+        if (model.activeColumn == numberOfColumns) {
+            confirmButtons[model.activeRow].setVisible(true);
         }
     }
 
@@ -190,6 +210,7 @@ public class GameController {
     }
 
     public void goBackToMainMenu(ActionEvent actionEvent) {
+
         MainController ctrl = new MainController();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
@@ -211,6 +232,7 @@ public class GameController {
     }
 
     private void closeCurrentStage() {
+        model.endGame();
         Stage currStage = (Stage) gameGrid.getScene().getWindow();
         currStage.close();
     }
@@ -220,26 +242,25 @@ public class GameController {
         byte fullHits = result[0];
         byte halfHits = result[1];
 
-        guideGrids[activeRow].setVisible(true);
-        confirmButtons[activeRow].setVisible(false);
+        guideGrids[model.activeRow].setVisible(true);
+        confirmButtons[model.activeRow].setVisible(false);
 
         fillGameGuideGridCircles(fullHits, halfHits);
 
         model.clearInputList();
 
         if (fullHits == 4) {
-            gameEnded = true;
+            model.gameEnded = true;
             showEndAlert(true);
-            //goBackToMainMenu(new ActionEvent());
             btnRestart.setText("Play again");
             return;
         }
 
-        activeRow++;
-        activeColumn = 0;
+        model.activeRow++;
+        model.activeColumn = 0;
 
-        if (activeRow == numberOfRows) {
-            gameEnded = true;
+        if (model.activeRow == numberOfRows) {
+            model.gameEnded = true;
             showEndAlert(false);
             btnRestart.setText("Play again");
         }
@@ -266,7 +287,7 @@ public class GameController {
     }
 
     private void fillGameGuideGridCircles(byte fullHits, byte halfHits) {
-        ObservableList<Node> children = guideGrids[activeRow].getChildren();
+        ObservableList<Node> children = guideGrids[model.activeRow].getChildren();
         Circle[][] circles = new Circle[2][2];
 
         for (Node node : children) {
@@ -301,20 +322,20 @@ public class GameController {
     }
 
     public void recoverInputAction(ActionEvent actionEvent) {
-        if (gameEnded) return;
+        if (model.gameEnded) return;
         Button pressedButton = (Button) actionEvent.getSource();
         for (int j = 0; j < numberOfColumns; j++) {
-            if (gameGridButtons[activeRow][j] == pressedButton) {
+            if (gameGridButtons[model.activeRow][j] == pressedButton) {
                 pressedButton.setStyle(null);
-                model.getInputList()[j] = -1;
-                if (j < activeColumn)
-                    activeColumn = (byte) j;
+                model.inputList[j] = -1;
+                if (j < model.activeColumn)
+                    model.activeColumn = (byte) j;
             }
         }
     }
 
     public void restartAction(ActionEvent actionEvent) {
-        GameController ctrl = new GameController(model.getDifficulty());
+        GameController ctrl = new GameController(model.difficulty);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
         loader.setController(ctrl);

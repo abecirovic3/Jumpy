@@ -1,30 +1,30 @@
 package sample;
 
 public class GameModel {
-    private byte[] generatedList = new byte[4];
-    private byte[] inputList = new byte[4];
+    private static GameModel instance;
 
-    private Difficulty difficulty;
+    public byte[] generatedList;
+    public byte[] inputList = new byte[4];
 
-    public GameModel() {
-        generatedList = generateList();
+    public Difficulty difficulty;
+
+    public byte activeRow = 0, activeColumn = 0;
+    public boolean firstAction = true;
+    public boolean gameEnded = false;
+
+    public static GameModel getInstance() {
+        if (instance == null) instance = new GameModel();
+        return instance;
     }
 
-    public byte[] generateList() {
-        byte[] result = new byte[4];
+    private GameModel() {}
+
+    public void generateList() {
+        generatedList = new byte[4];
         byte min = 1, max = 6;
         for (int i=0; i<4; i++) {
-            result[i] = (byte)(min + (byte)(Math.random() * ((max - min) + 1)));
+            generatedList[i] = (byte)(min + (byte)(Math.random() * ((max - min) + 1)));
         }
-        return result;
-    }
-
-    public byte[] getGeneratedList() {
-        return generatedList;
-    }
-
-    public byte[] getInputList() {
-        return inputList;
     }
 
     public byte[] validateInput() {
@@ -67,11 +67,10 @@ public class GameModel {
             inputList[i] = -1;
     }
 
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(Difficulty difficulty) {
-        this.difficulty = difficulty;
+    public void endGame() {
+        activeRow = 0;
+        activeColumn = 0;
+        firstAction = true;
+        gameEnded = false;
     }
 }
