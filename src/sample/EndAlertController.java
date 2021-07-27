@@ -2,7 +2,6 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,14 +20,13 @@ public class EndAlertController {
 
     public VBox winVBox;
     public Label labelDifficulty;
-    public GridPane rankGrid;
+    public GridPane infoGrid;
 
     private boolean win;
-    private GameModel model;
+    private GameModel model = GameModel.getInstance();
 
-    public EndAlertController(boolean win, GameModel model) {
+    public EndAlertController(boolean win) {
         this.win = win;
-        this.model = model;
     }
 
     @FXML
@@ -40,16 +38,11 @@ public class EndAlertController {
 
         initializeCombinationImages();
 
-        if (win && timeIsInTop10()) {
-            winVBox.setVisible(true);
-            // set rankings...
-        }
-
         labelDifficulty.setText(labelDifficulty.getText() + model.difficulty);
-    }
 
-    private boolean timeIsInTop10() {
-        return true;
+        if (win) {
+            winVBox.setVisible(true);
+        }
     }
 
     private void initializeCombinationImages() {

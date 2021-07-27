@@ -272,7 +272,7 @@ public class GameController {
     }
 
     private void showEndAlert(boolean win) {
-        EndAlertController ctrl = new EndAlertController(win, model);
+        EndAlertController ctrl = new EndAlertController(win);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/endGameAlert.fxml"));
         loader.setController(ctrl);
