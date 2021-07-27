@@ -14,6 +14,8 @@ public class GameModel {
 
     public Stopwatch stopwatch = new Stopwatch();
 
+    public DAO dao = DAO.getInstance();
+
     public static GameModel getInstance() {
         if (instance == null) instance = new GameModel();
         return instance;
