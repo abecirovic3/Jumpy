@@ -56,22 +56,32 @@
                   <RowConstraints maxHeight="32.0" minHeight="32.0" percentHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label fx:id="labelTop10" text="Your time:">
+                  <Label text="Your time:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelTop101" text="Your rank:" GridPane.rowIndex="1">
+                  <Label text="Your rank:" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelTop102" layoutX="10.0" layoutY="10.0" text="Enter your name:" GridPane.rowIndex="2">
+                  <Label layoutX="10.0" layoutY="10.0" text="Enter your name:" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField maxHeight="32.0" maxWidth="128.0" minHeight="32.0" minWidth="128.0" prefHeight="32.0" prefWidth="128.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="timeLabel" layoutX="10.0" layoutY="17.0" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="rankLabel" layoutX="143.0" layoutY="17.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameField" maxHeight="32.0" maxWidth="128.0" minHeight="32.0" minWidth="128.0" prefHeight="32.0" prefWidth="128.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Separator prefWidth="200.0" />

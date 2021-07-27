@@ -253,7 +253,7 @@ public class GameController {
         model.clearInputList();
 
         if (fullHits == 4) {
-//            model.stopwatch.stop();
+            model.stopwatch.stop();
             model.gameEnded = true;
             showEndAlert(true);
             btnRestart.setText("Play again");
@@ -264,7 +264,7 @@ public class GameController {
         model.activeColumn = 0;
 
         if (model.activeRow == numberOfRows) {
-//            model.stopwatch.stop();
+            model.stopwatch.stop();
             model.gameEnded = true;
             showEndAlert(false);
             btnRestart.setText("Play again");

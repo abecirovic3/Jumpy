@@ -53,6 +53,7 @@ public class GameModel {
                     if(inputList[i] == copyOfGeneratedList[j]) {
                         copyOfGeneratedList[j] = -1;
                         halfHitsCounter++;
+                        break;
                     }
                 }
             }
@@ -80,6 +81,7 @@ public class GameModel {
         resetGameParameters();
         generateList();
         clearInputList();
+        stopwatch.reset();
         this.difficulty = difficulty;
     }
 }

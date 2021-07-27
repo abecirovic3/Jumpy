@@ -3,6 +3,7 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -18,9 +19,12 @@ public class EndAlertController {
     public ImageView img3;
     public ImageView img4;
 
-    public VBox winVBox;
     public Label labelDifficulty;
-    public GridPane infoGrid;
+
+    public VBox winVBox;
+    public Label timeLabel;
+    public Label rankLabel;
+    public TextField nameField;
 
     private boolean win;
     private GameModel model = GameModel.getInstance();
@@ -42,6 +46,8 @@ public class EndAlertController {
 
         if (win) {
             winVBox.setVisible(true);
+            timeLabel.setText(model.stopwatch.getElapsedTime().toString());
+            rankLabel.setText("5"); // temp
         }
     }
 
