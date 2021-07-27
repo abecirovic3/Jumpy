@@ -13,6 +13,9 @@ import java.io.IOException;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class MainController {
+
+    public Button btnEasy;
+
     public void startGameAction(ActionEvent actionEvent) {
         Difficulty difficulty = determineGameDifficulty(((Button) actionEvent.getSource()).getId());
 
@@ -34,7 +37,6 @@ public class MainController {
 
         GameModel m = GameModel.getInstance();
         stage.setOnCloseRequest(e -> {
-            System.out.println("Closing...");
             m.gameEnded = true; // we do this to stop the stopwatch thread in GameController
         });
         stage.show();
@@ -52,5 +54,27 @@ public class MainController {
             difficulty = Difficulty.HARD;
 
         return difficulty;
+    }
+
+    public void openHighscoresViewAction(ActionEvent actionEvent) {
+        HighscoreController ctrl = new HighscoreController();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/highscores.fxml"));
+        loader.setController(ctrl);
+
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("Highscores");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.show();
+
+        Stage currStage = (Stage) btnEasy.getScene().getWindow();
+        currStage.close();
     }
 }

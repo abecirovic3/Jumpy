@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -75,6 +74,7 @@ public class EndAlertController {
     }
 
     public void closeAlertAction(ActionEvent actionEvent) {
+        model.dao.addHighscore(nameField.getText(), model.stopwatch.getElapsedTime().toString(), model.difficulty.toString());
         Stage currStage = (Stage) labelTitleMessage.getScene().getWindow();
         currStage.close();
     }

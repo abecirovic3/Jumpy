@@ -117,9 +117,9 @@ public class DAO {
 
     private Difficulty getDifficultyFromString(String d) {
         Difficulty diff = Difficulty.EASY;
-        if (d.equals("N"))
+        if (d.equals("NORMAL"))
             diff = Difficulty.NORMAL;
-        else if (d.equals("H"))
+        else if (d.equals("HARD"))
             diff = Difficulty.HARD;
         return diff;
     }
