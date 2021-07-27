@@ -20,7 +20,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox prefWidth="150.0" />
+            <ChoiceBox fx:id="diffChoiceBox" prefWidth="150.0" />
          </children>
       </HBox>
       <Separator prefWidth="200.0" />

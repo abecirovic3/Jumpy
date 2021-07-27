@@ -136,4 +136,13 @@ public class DAO {
     public ObservableList<Highscore> getHighscores() {
         return highscores;
     }
+
+    public ObservableList<Highscore> getHighscoresByDifficulty(Difficulty difficulty) {
+        ObservableList<Highscore> result = FXCollections.observableArrayList();
+        for (Highscore h : highscores)
+            if (h.getDifficulty() == difficulty)
+                result.add(h);
+
+        return result;
+    }
 }

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -14,6 +15,8 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class HighscoreController {
     public ListView scoresList;
+    public ChoiceBox diffChoiceBox;
+
     private GameModel model = GameModel.getInstance();
 
     public HighscoreController() {
@@ -21,7 +24,14 @@ public class HighscoreController {
 
     @FXML
     public void initialize() {
-        scoresList.setItems(model.dao.getHighscores());
+        diffChoiceBox.getItems().addAll(Difficulty.EASY, Difficulty.NORMAL, Difficulty.HARD);
+        diffChoiceBox.setValue(Difficulty.EASY);
+
+        diffChoiceBox.setOnAction((event) -> {
+            scoresList.setItems(model.dao.getHighscoresByDifficulty((Difficulty) diffChoiceBox.getValue()));
+        });
+
+        scoresList.setItems(model.dao.getHighscoresByDifficulty(Difficulty.EASY));
     }
 
     public void goBackToMainMenuAction(ActionEvent actionEvent) {
