@@ -46,8 +46,21 @@ public class EndAlertController {
         if (win) {
             winVBox.setVisible(true);
             timeLabel.setText(model.stopwatch.getElapsedTime().toString());
-            rankLabel.setText("5"); // temp
+            rankLabel.setText(determineRank());
         }
+    }
+
+    private String determineRank() {
+        Highscore temp = new Highscore("temp", model.stopwatch.getElapsedTime(), model.difficulty);
+        int rank = 1;
+        for (Highscore h : model.dao.getHighscores()) {
+            if (h.getDifficulty() == model.difficulty) {
+                if (h.compareTo(temp) > 0)
+                    break;
+                else rank++;
+            }
+        }
+        return Integer.toString(rank);
     }
 
     private void initializeCombinationImages() {
