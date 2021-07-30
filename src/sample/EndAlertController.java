@@ -87,11 +87,13 @@ public class EndAlertController {
     }
 
     public void closeAlertAction(ActionEvent actionEvent) {
-        if (nameField.getText().equals("")) {
-            nameField.setStyle("-fx-border-color: red;");
-            return;
+        if (win) {
+            if (nameField.getText().equals("")) {
+                nameField.setStyle("-fx-border-color: red;");
+                return;
+            }
+            model.dao.addHighscore(nameField.getText(), model.stopwatch.getElapsedTime().toString(), model.difficulty.toString());
         }
-        model.dao.addHighscore(nameField.getText(), model.stopwatch.getElapsedTime().toString(), model.difficulty.toString());
         Stage currStage = (Stage) labelTitleMessage.getScene().getWindow();
         currStage.close();
     }
