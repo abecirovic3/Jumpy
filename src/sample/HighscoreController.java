@@ -56,4 +56,9 @@ public class HighscoreController {
         Stage currStage = (Stage) node.getScene().getWindow();
         currStage.close();
     }
+
+    public void deleteScoresAction(ActionEvent actionEvent) {
+        model.dao.deleteAllHighscoresByDifficulty((Difficulty) diffChoiceBox.getValue());
+        scoresList.setItems(null);
+    }
 }

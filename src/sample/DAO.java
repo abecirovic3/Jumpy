@@ -13,7 +13,7 @@ public class DAO {
     private static DAO instance;
     private Connection conn;
     private ObservableList<Highscore> highscores = FXCollections.observableArrayList();
-    private PreparedStatement getAllHighscoresQuery, addHighscoreQuery, deleteAllHighscoresQuery, getNewUserIdQuery;
+    private PreparedStatement getAllHighscoresQuery, addHighscoreQuery, deleteAllHighscoresByDifficultyQuery, getNewUserIdQuery;
 
     public static DAO getInstance() {
         if (instance == null) instance = new DAO();
@@ -59,7 +59,7 @@ public class DAO {
         try {
             addHighscoreQuery = conn.prepareStatement("INSERT INTO highscores VALUES(?, ?, ?, ?)");
             getNewUserIdQuery = conn.prepareStatement("SELECT MAX(id) + 1 FROM highscores");
-            deleteAllHighscoresQuery = conn.prepareStatement("DELETE from highscores");
+            deleteAllHighscoresByDifficultyQuery = conn.prepareStatement("DELETE FROM highscores WHERE difficulty = ?");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -124,10 +124,11 @@ public class DAO {
         return diff;
     }
 
-    public void deleteAllHighscores() {
+    public void deleteAllHighscoresByDifficulty(Difficulty difficulty) {
         try {
-            deleteAllHighscoresQuery.executeUpdate();
-            highscores.removeAll();
+            deleteAllHighscoresByDifficultyQuery.setString(1, difficulty.toString());
+            deleteAllHighscoresByDifficultyQuery.executeUpdate();
+            highscores.removeIf(h -> h.getDifficulty() == difficulty);
         } catch (SQLException e) {
             e.printStackTrace();
         }
