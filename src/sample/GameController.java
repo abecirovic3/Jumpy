@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -34,10 +36,13 @@ public class GameController {
     private Button[][] gameGridButtons;
     private byte numberOfColumns = 4, numberOfRows = 5;
 
+    public MenuBar menuBar;
+    private Menu gameMenu;
+
     private Button[] confirmButtons;
     private GridPane[] guideGrids;
 
-    public GameController(Difficulty difficulty) {
+    public GameController(Difficulty difficulty, Menu menu) {
         model = GameModel.getInstance();
         model.startGame(difficulty);
 
@@ -49,6 +54,7 @@ public class GameController {
         gameGridButtons = new Button[numberOfRows][numberOfColumns];
         confirmButtons = new Button[numberOfRows];
         guideGrids = new GridPane[numberOfRows];
+        gameMenu = menu;
     }
 
     @FXML
@@ -60,6 +66,8 @@ public class GameController {
             addRowToGameGrid();
             addRowToGameGrid();
         }
+
+        menuBar.getMenus().add(gameMenu);
 
         initializeGameGridNodes();
     }
@@ -351,7 +359,7 @@ public class GameController {
             e.printStackTrace();
         }
 
-        GameController ctrl = new GameController(model.difficulty);
+        GameController ctrl = new GameController(model.difficulty, menuBar.getMenus().get(0));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
         loader.setController(ctrl);

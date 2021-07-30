@@ -28,7 +28,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
           <Button mnemonicParsing="false" onAction="#deleteScoresAction" text="Delete scores" />
-            <Button layoutX="257.0" layoutY="17.0" mnemonicParsing="false" onAction="#goBackToMainMenuAction" text="Back" />
+            <Button layoutX="257.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeAction" text="Close" />
         </buttons>
       </ButtonBar>
    </children>

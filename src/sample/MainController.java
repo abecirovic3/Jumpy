@@ -6,6 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,11 +17,12 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class MainController {
 
     public Button btnEasy;
+    public Menu gameMenu;
 
     public void startGameAction(ActionEvent actionEvent) {
         Difficulty difficulty = determineGameDifficulty(((Button) actionEvent.getSource()).getId());
 
-        GameController ctrl = new GameController(difficulty);
+        GameController ctrl = new GameController(difficulty, gameMenu);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
         loader.setController(ctrl);
@@ -72,9 +75,10 @@ public class MainController {
         stage.setTitle("Highscores");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
-        stage.show();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
 
-        Stage currStage = (Stage) btnEasy.getScene().getWindow();
-        currStage.close();
+//        Stage currStage = (Stage) btnEasy.getScene().getWindow();
+//        currStage.close();
     }
 }

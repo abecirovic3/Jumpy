@@ -8,25 +8,7 @@
 
 <VBox spacing="5.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <MenuBar>
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+      <MenuBar fx:id="menuBar" />
       <GridPane fx:id="gameGrid" alignment="CENTER" hgap="10.0" vgap="10.0">
         <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="64.0" percentWidth="0.0" prefWidth="64.0" />
@@ -162,7 +144,7 @@
       </HBox>
       <HBox alignment="CENTER" minHeight="64.0" prefHeight="64.0" prefWidth="200.0" spacing="5.0">
          <children>
-            <Label fx:id="timeLabel" text="Time: 00:00:00" alignment="TOP_LEFT" minWidth="133.0" prefWidth="133.0">
+            <Label fx:id="timeLabel" alignment="TOP_LEFT" minWidth="133.0" prefWidth="133.0" text="Time: 00:00:00">
                <font>
                   <Font size="14.0" />
                </font>

@@ -34,23 +34,23 @@ public class HighscoreController {
         scoresList.setItems(model.dao.getHighscoresByDifficulty(Difficulty.EASY));
     }
 
-    public void goBackToMainMenuAction(ActionEvent actionEvent) {
-        MainController ctrl = new MainController();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
-        loader.setController(ctrl);
-
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Stage stage = new Stage();
-        stage.setTitle("Main");
-        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        stage.show();
+    public void closeAction(ActionEvent actionEvent) {
+//        MainController ctrl = new MainController();
+//
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+//        loader.setController(ctrl);
+//
+//        Parent root = null;
+//        try {
+//            root = loader.load();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        Stage stage = new Stage();
+//        stage.setTitle("Main");
+//        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+//        stage.setResizable(false);
+//        stage.show();
 
         Node node = (Node) actionEvent.getSource();
         Stage currStage = (Stage) node.getScene().getWindow();
