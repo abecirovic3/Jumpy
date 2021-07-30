@@ -15,7 +15,7 @@
               <MenuItem mnemonicParsing="false" onAction="#openHighscoresViewAction" text="Scores" />
                   <MenuItem mnemonicParsing="false" text="Help" />
                   <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="Quit" />
+                  <MenuItem mnemonicParsing="false" onAction="#quitAction" text="Quit" />
             </items>
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">

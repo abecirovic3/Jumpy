@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -77,8 +78,11 @@ public class MainController {
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
+    }
 
-//        Stage currStage = (Stage) btnEasy.getScene().getWindow();
-//        currStage.close();
+    public void quitAction(ActionEvent actionEvent) {
+        GameModel m = GameModel.getInstance();
+        m.gameEnded = true; // again we need this to end the stopwatch thread if needed
+        Platform.exit();
     }
 }
