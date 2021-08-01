@@ -38,7 +38,7 @@ public class GameModel {
         System.arraycopy(generatedList, 0, copyOfGeneratedList, 0, 4);
 
         byte fullHitsCounter = 0;
-        // full hits loop
+
         for (int i=0; i<4; i++) {
             if (inputList[i] == copyOfGeneratedList[i]) {
                 fullHitsCounter++;
@@ -48,7 +48,7 @@ public class GameModel {
         }
 
         byte halfHitsCounter = 0;
-        //half hits loop
+
         for(int i=0; i<4; i++) {
             if (inputList[i] != -1) {
                 for( int j=0; j<4; j++) {

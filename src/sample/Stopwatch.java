@@ -1,7 +1,5 @@
 package sample;
 
-import javafx.application.Platform;
-
 import java.time.LocalTime;
 
 public class Stopwatch {

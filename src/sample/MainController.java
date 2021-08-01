@@ -16,8 +16,6 @@ import java.io.IOException;
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class MainController {
-
-    public Button btnEasy;
     public Menu gameMenu;
 
     public void startGameAction(ActionEvent actionEvent) {

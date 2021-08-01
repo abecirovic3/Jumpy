@@ -129,7 +129,6 @@ public class GameController {
                         public void run() {
                             timeLabel.setText("Time: "
                                     + model.stopwatch.getElapsedTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-//                            System.out.println(timeLabel.getText());
                         }
                     });
 
