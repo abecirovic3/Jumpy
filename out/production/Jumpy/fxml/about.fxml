@@ -36,7 +36,7 @@
             <Cursor fx:constant="HAND" />
          </cursor></Button>
       <Separator prefWidth="200.0" />
-      <Label lineSpacing="2.0" prefHeight="68.0" prefWidth="324.0" text="Copyright © Free Software Foundation, Inc.&#10;License: GNU General Public License, version 3 &#10;This program comes with absolutely no warranty." textAlignment="CENTER" />
+      <Label lineSpacing="2.0" prefHeight="68.0" prefWidth="324.0" text="Copyright © Free Software Foundation, Inc.&#10;License: GNU General Public License, version 3. &#10;This program comes with absolutely no warranty." textAlignment="CENTER" />
       <Separator layoutX="15.0" layoutY="118.0" prefWidth="200.0" />
       <Label text="External resources:&#10;Icons used in game:" />
       <Hyperlink onAction="#openLinkAction" text="https://www.flaticon.com/packs/animals-and-nature" />
