@@ -35,30 +35,14 @@ public class HighscoreController {
     }
 
     public void closeAction(ActionEvent actionEvent) {
-//        MainController ctrl = new MainController();
-//
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
-//        loader.setController(ctrl);
-//
-//        Parent root = null;
-//        try {
-//            root = loader.load();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Stage stage = new Stage();
-//        stage.setTitle("Main");
-//        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-//        stage.setResizable(false);
-//        stage.show();
-
         Node node = (Node) actionEvent.getSource();
         Stage currStage = (Stage) node.getScene().getWindow();
         currStage.close();
     }
 
     public void deleteScoresAction(ActionEvent actionEvent) {
-        model.dao.deleteAllHighscoresByDifficulty((Difficulty) diffChoiceBox.getValue());
+        if (scoresList.getItems() != null)
+            model.dao.deleteAllHighscoresByDifficulty((Difficulty) diffChoiceBox.getValue());
         scoresList.setItems(null);
     }
 }
