@@ -14,7 +14,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#openHighscoresViewAction" text="Scores" />
                   <MenuItem mnemonicParsing="false" text="Help" />
-                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem mnemonicParsing="false" onAction="#openAboutViewAction" text="About" />
                   <MenuItem mnemonicParsing="false" onAction="#quitAction" text="Quit" />
             </items>
                <graphic>

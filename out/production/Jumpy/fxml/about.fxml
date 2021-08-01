@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="400.0" spacing="5.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Jumpy">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label text="v 1.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Separator layoutX="15.0" layoutY="124.0" prefWidth="200.0" />
+      <Label text="Game made by: Ajdin Becirovic">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button minHeight="32.0" minWidth="32.0" mnemonicParsing="false" onAction="#openGithubAction" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: Transparent;">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/github.png" />
+               </image></ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Separator prefWidth="200.0" />
+      <Label lineSpacing="2.0" prefHeight="68.0" prefWidth="324.0" text="Copyright © Free Software Foundation, Inc.&#10;License: GNU General Public License, version 3 &#10;This program comes with absolutely no warranty." textAlignment="CENTER" />
+      <Separator layoutX="15.0" layoutY="118.0" prefWidth="200.0" />
+      <Label text="External resources:&#10;Icons used in game:" />
+      <Hyperlink onAction="#openLinkAction" text="https://www.flaticon.com/packs/animals-and-nature" />
+      <Hyperlink layoutX="37.0" layoutY="244.0" onAction="#openLinkAction" text="https://www.flaticon.com/packs/ui-26" />
+      <Hyperlink layoutX="37.0" layoutY="273.0" onAction="#openLinkAction" text="https://www.flaticon.com/packs/casino-26" />
+      <Hyperlink layoutX="69.0" layoutY="302.0" onAction="#openLinkAction" text="https://www.flaticon.com/free-icons/github" />
+      <ButtonBar prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#closeAction" text="Close" />
+        </buttons>
+      </ButtonBar>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

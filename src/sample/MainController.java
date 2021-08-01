@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.HostServices;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,12 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class MainController {
     public Menu gameMenu;
+
+    private HostServices hostServices;
+
+    public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices;
+    }
 
     public void startGameAction(ActionEvent actionEvent) {
         Difficulty difficulty = determineGameDifficulty(((Button) actionEvent.getSource()).getId());
@@ -72,6 +79,27 @@ public class MainController {
         }
         Stage stage = new Stage();
         stage.setTitle("Highscores");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
+
+    public void openAboutViewAction(ActionEvent actionEvent) {
+        AboutController ctrl = new AboutController();
+        ctrl.setHostServices(hostServices);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/about.fxml"));
+        loader.setController(ctrl);
+
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("About Jumpy");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
