@@ -10,10 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -23,6 +20,7 @@ import javafx.util.Pair;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -203,27 +201,30 @@ public class GameController {
     }
 
     public void goBackToMainMenu(ActionEvent actionEvent) {
+        ButtonType chosenAlertOption = ButtonType.OK;
+        if (!model.stopwatch.isStopped())
+            chosenAlertOption = showConfirmationAlert();
 
-        // here we should check if stopwatch started and if so then show alert...
+        if (chosenAlertOption == ButtonType.OK) {
+            MainController ctrl = new MainController();
 
-        MainController ctrl = new MainController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+            loader.setController(ctrl);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
-        loader.setController(ctrl);
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setTitle("Main");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
 
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
+            closeCurrentStage();
         }
-        Stage stage = new Stage();
-        stage.setTitle("Main");
-        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        stage.show();
-
-        closeCurrentStage();
     }
 
     private void closeCurrentStage() {
@@ -336,29 +337,45 @@ public class GameController {
     }
 
     public void restartAction(ActionEvent actionEvent) {
-        closeCurrentStage();
-        // need to find better way of stopping the stopwatch thread ^ˇ
-        try {
-            Thread.currentThread().sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        ButtonType chosenAlertOption = ButtonType.OK;
+        if (!model.stopwatch.isStopped())
+            chosenAlertOption = showConfirmationAlert();
+
+        if (chosenAlertOption == ButtonType.OK) {
+            closeCurrentStage();
+            // need to find better way of stopping the stopwatch thread ^ˇ
+            try {
+                Thread.currentThread().sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            GameController ctrl = new GameController(model.difficulty, menuBar.getMenus().get(0));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
+            loader.setController(ctrl);
+
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setTitle("Jumpy");
+            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setResizable(false);
+            stage.show();
         }
+    }
 
-        GameController ctrl = new GameController(model.difficulty, menuBar.getMenus().get(0));
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/game.fxml"));
-        loader.setController(ctrl);
-
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Stage stage = new Stage();
-        stage.setTitle("Jumpy");
-        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
-        stage.setResizable(false);
-        stage.show();
+    private ButtonType showConfirmationAlert() {
+        Optional<ButtonType> result = Optional.of(ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Are you sure you want to start a new game?");
+        alert.setContentText("Your current progress will be lost.");
+        result = alert.showAndWait();
+        return result.get();
     }
 }

@@ -38,7 +38,12 @@ public class Stopwatch {
     }
 
     public void reset() {
+        stopped = true;
         startTime = LocalTime.of(0, 0, 0, 0);
         stoppedElapsedTime = LocalTime.of(0, 0, 0, 0);
+    }
+
+    public boolean isStopped() {
+        return stopped;
     }
 }
