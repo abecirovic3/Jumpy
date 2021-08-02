@@ -120,23 +120,15 @@ public class GameController {
     }
 
     private void startStopwatchThread() {
-        Thread timeThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!model.gameEnded) {
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            timeLabel.setText("Time: "
-                                    + model.stopwatch.getElapsedTime().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-                        }
-                    });
+        Thread timeThread = new Thread(() -> {
+            while (!model.gameEnded) {
+                Platform.runLater(() -> timeLabel.setText("Time: "
+                        + model.stopwatch.getElapsedTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"))));
 
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -173,11 +165,7 @@ public class GameController {
         confirmBtn.setPrefWidth(32);
         confirmBtn.setStyle("-fx-background-image: url(\"/img/confirmation.png\");\n" +
                 "-fx-background-color: Transparent;");
-        confirmBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-                validateInputAction(e);
-            }
-        });
+        confirmBtn.setOnAction(this::validateInputAction);
         return confirmBtn;
     }
 
@@ -209,16 +197,14 @@ public class GameController {
             buttons[i] = new Button();
             buttons[i].setPrefWidth(64);
             buttons[i].setPrefHeight(64);
-            buttons[i].setOnAction(new EventHandler<ActionEvent>() {
-                @Override public void handle(ActionEvent e) {
-                    recoverInputAction(e);
-                }
-            });
+            buttons[i].setOnAction(this::recoverInputAction);
         }
         return buttons;
     }
 
     public void goBackToMainMenu(ActionEvent actionEvent) {
+
+        // here we should check if stopwatch started and if so then show alert...
 
         MainController ctrl = new MainController();
 
@@ -241,7 +227,6 @@ public class GameController {
     }
 
     private void closeCurrentStage() {
-        //model.resetGameParameters();
         model.gameEnded = true;
         Stage currStage = (Stage) gameGrid.getScene().getWindow();
         currStage.close();
@@ -316,6 +301,7 @@ public class GameController {
 
         int row = 0, column = 0;
         for (byte i = 0; i < fullHits; i++) {
+            // this needs styling
             circles[row][column].setFill(Paint.valueOf("FF0000"));
             column++;
             if (column == 2) {
@@ -375,8 +361,4 @@ public class GameController {
         stage.setResizable(false);
         stage.show();
     }
-
-//    public void setTimeLabelText(String text) {
-//        timeLabel.setText(text);
-//    }
 }
