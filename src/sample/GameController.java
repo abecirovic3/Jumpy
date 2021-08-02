@@ -301,7 +301,7 @@ public class GameController {
 
         int row = 0, column = 0;
         for (byte i = 0; i < fullHits; i++) {
-            // this needs styling
+            circles[row][column].setStroke(Paint.valueOf("000000"));
             circles[row][column].setFill(Paint.valueOf("FF0000"));
             column++;
             if (column == 2) {
