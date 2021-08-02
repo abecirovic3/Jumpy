@@ -19,12 +19,6 @@ import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 public class MainController {
     public Menu gameMenu;
 
-    private HostServices hostServices;
-
-    public void setHostServices(HostServices hostServices) {
-        this.hostServices = hostServices;
-    }
-
     public void startGameAction(ActionEvent actionEvent) {
         Difficulty difficulty = determineGameDifficulty(((Button) actionEvent.getSource()).getId());
 
@@ -87,7 +81,6 @@ public class MainController {
 
     public void openAboutViewAction(ActionEvent actionEvent) {
         AboutController ctrl = new AboutController();
-        ctrl.setHostServices(hostServices);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/about.fxml"));
         loader.setController(ctrl);

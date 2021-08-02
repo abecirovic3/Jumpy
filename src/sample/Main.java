@@ -13,7 +13,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         MainController ctrl = new MainController();
-        ctrl.setHostServices(getHostServices());
+
+        // we need hostServices for opening links from other controllers
+        GameModel m = GameModel.getInstance();
+        m.setHostServices(getHostServices());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
         loader.setController(ctrl);

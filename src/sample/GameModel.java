@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.application.HostServices;
+
 public class GameModel {
     private static GameModel instance;
 
@@ -20,6 +22,8 @@ public class GameModel {
         if (instance == null) instance = new GameModel();
         return instance;
     }
+
+    private HostServices hostServices;
 
     private GameModel() {}
 
@@ -85,5 +89,13 @@ public class GameModel {
         clearInputList();
         stopwatch.reset();
         this.difficulty = difficulty;
+    }
+
+    public HostServices getHostServices() {
+        return hostServices;
+    }
+
+    public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices;
     }
 }

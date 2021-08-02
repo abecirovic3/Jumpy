@@ -1,25 +1,20 @@
 package sample;
 
-import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Hyperlink;
 import javafx.stage.Stage;
 
 public class AboutController {
-    private HostServices hostServices;
-
-    public void setHostServices(HostServices hostServices) {
-        this.hostServices = hostServices;
-    }
+    private final GameModel model = GameModel.getInstance();
 
     public void openGithubAction(ActionEvent actionEvent) {
-        hostServices.showDocument("https://github.com/abecirovic3");
+        model.getHostServices().showDocument("https://github.com/abecirovic3");
     }
 
     public void openLinkAction(ActionEvent actionEvent) {
         Hyperlink link = (Hyperlink) actionEvent.getSource();
-        hostServices.showDocument(link.getText());
+        model.getHostServices().showDocument(link.getText());
     }
 
     public void closeAction(ActionEvent actionEvent) {
