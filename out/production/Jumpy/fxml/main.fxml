@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar>
         <menus>
           <Menu fx:id="gameMenu" mnemonicParsing="false">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#openHighscoresViewAction" text="Scores" />
-                  <MenuItem mnemonicParsing="false" text="Help" />
+                  <MenuItem mnemonicParsing="false" onAction="#openHelpViewAction" text="Help" />
                   <MenuItem mnemonicParsing="false" onAction="#openAboutViewAction" text="About" />
                   <MenuItem mnemonicParsing="false" onAction="#quitAction" text="Quit" />
             </items>

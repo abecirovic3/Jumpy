@@ -99,6 +99,26 @@ public class MainController {
         stage.showAndWait();
     }
 
+    public void openHelpViewAction(ActionEvent actionEvent) {
+        HelpController ctrl = new HelpController();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/help.fxml"));
+        loader.setController(ctrl);
+
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("Help");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
+
     public void quitAction(ActionEvent actionEvent) {
         GameModel m = GameModel.getInstance();
         m.gameEnded = true; // again we need this to end the stopwatch thread if needed
