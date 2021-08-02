@@ -3,6 +3,7 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.*;
@@ -40,7 +41,7 @@ public class DAO {
 
     private DAO() {
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:jumpyScores.db");
+            conn = DriverManager.getConnection("jdbc:sqlite:" + System.getProperty("user.home") + File.separator + ".jumpyScores.db");
         } catch (SQLException e) {
             e.printStackTrace();
         }
