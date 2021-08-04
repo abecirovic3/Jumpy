@@ -3,11 +3,54 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="5.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="5.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label text="Help is on the way :D" />
+      <Label text="Jumpy">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label prefHeight="55.0" prefWidth="590.0" text="Jumpy is a simple puzzle game, which is based on the original game Skocko found as a part in the quiz gaming show Slagalica. The game is free to play, and feel free to contribute if you like :)." textAlignment="JUSTIFY" wrapText="true" />
+      <Separator layoutX="15.0" layoutY="209.0" prefWidth="200.0" />
+      <Label text="Game Play">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox spacing="5.0">
+         <children>
+            <Hyperlink text="Game rules" />
+            <Hyperlink layoutX="10.0" layoutY="10.0" text="Start a new game" />
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <Label layoutX="15.0" layoutY="15.0" text="Useful Tips">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="15.0" layoutY="41.0" spacing="5.0">
+         <children>
+            <Hyperlink text="High scores" />
+            <Hyperlink layoutX="10.0" layoutY="10.0" text="Watch the time" />
+         </children>
+      </HBox>
+      <Separator layoutX="15.0" layoutY="41.0" prefWidth="200.0" />
+      <Label layoutX="15.0" layoutY="86.0" text="Get Involved">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="15.0" layoutY="104.0" spacing="5.0">
+         <children>
+            <Hyperlink text="Report bugs" />
+            <Hyperlink layoutX="10.0" layoutY="10.0" text="Help develop" />
+         </children>
+      </HBox>
+      <Separator layoutX="15.0" layoutY="133.0" prefWidth="200.0" />
+      <TextArea editable="false" prefHeight="233.0" prefWidth="590.0" />
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
           <Button mnemonicParsing="false" onAction="#closeAction" text="Close" />
