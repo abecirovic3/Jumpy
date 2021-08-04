@@ -21,8 +21,8 @@
       </Label>
       <HBox spacing="5.0">
          <children>
-            <Hyperlink text="Game rules" />
-            <Hyperlink layoutX="10.0" layoutY="10.0" text="Start a new game" />
+            <Hyperlink fx:id="gameRulesLink" onAction="#setTextAreaAction" text="Game rules" />
+            <Hyperlink fx:id="newGameLink" layoutX="10.0" layoutY="10.0" onAction="#setTextAreaAction" text="Start a new game" />
          </children>
       </HBox>
       <Separator prefWidth="200.0" />
@@ -33,8 +33,8 @@
       </Label>
       <HBox layoutX="15.0" layoutY="41.0" spacing="5.0">
          <children>
-            <Hyperlink text="High scores" />
-            <Hyperlink layoutX="10.0" layoutY="10.0" text="Watch the time" />
+            <Hyperlink fx:id="highScoresLink" onAction="#setTextAreaAction" text="High scores" />
+            <Hyperlink fx:id="watchTheTimeLink" layoutX="10.0" layoutY="10.0" onAction="#setTextAreaAction" text="Watch the time" />
          </children>
       </HBox>
       <Separator layoutX="15.0" layoutY="41.0" prefWidth="200.0" />
@@ -45,12 +45,15 @@
       </Label>
       <HBox layoutX="15.0" layoutY="104.0" spacing="5.0">
          <children>
-            <Hyperlink text="Report bugs" />
-            <Hyperlink layoutX="10.0" layoutY="10.0" text="Help develop" />
+            <Hyperlink fx:id="reportBugsLink" onAction="#setTextAreaAction" text="Report bugs" />
+            <Hyperlink fx:id="helpDevelopLink" layoutX="10.0" layoutY="10.0" onAction="#setTextAreaAction" text="Help develop" />
          </children>
       </HBox>
       <Separator layoutX="15.0" layoutY="133.0" prefWidth="200.0" />
-      <TextArea editable="false" prefHeight="233.0" prefWidth="590.0" />
+      <TextArea fx:id="textArea" editable="false" prefHeight="233.0" prefWidth="590.0" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font></TextArea>
       <ButtonBar prefHeight="40.0" prefWidth="200.0">
         <buttons>
           <Button mnemonicParsing="false" onAction="#closeAction" text="Close" />
