@@ -22,5 +22,4 @@ public class AboutController {
         Stage currStage = (Stage) node.getScene().getWindow();
         currStage.close();
     }
-
 }

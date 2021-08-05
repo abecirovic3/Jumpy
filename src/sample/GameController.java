@@ -3,7 +3,6 @@ package sample;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -343,7 +342,7 @@ public class GameController {
 
         if (chosenAlertOption == ButtonType.OK) {
             closeCurrentStage();
-            // need to find better way of stopping the stopwatch thread ^ˇ
+            // should've used better logic for stopping the stop watch thread
             try {
                 Thread.currentThread().sleep(1000);
             } catch (InterruptedException e) {
@@ -370,7 +369,7 @@ public class GameController {
     }
 
     private ButtonType showConfirmationAlert() {
-        Optional<ButtonType> result = Optional.of(ButtonType.OK);
+        Optional<ButtonType> result;
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Are you sure you want to start a new game?");

@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         MainController ctrl = new MainController();
 
-        // we need hostServices for opening links from other controllers
+        // we need hostServices for opening links in browser from other controllers
         GameModel m = GameModel.getInstance();
         m.setHostServices(getHostServices());
 

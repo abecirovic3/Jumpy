@@ -1,4 +1,0 @@
-animals: https://www.flaticon.com/packs/animals-and-nature
-confirmation: https://www.flaticon.com/packs/ui-26
-menu: https://www.flaticon.com/packs/casino-26
-github: https://www.flaticon.com/free-icons/github
