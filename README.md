@@ -42,6 +42,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+![Screenshot](https://github.com/abecirovic3/Jumpy/blob/master/images/jumpyScreen.PNG?raw=true)
+
 When I was in highschool my friends and I used to play Slagalica all the time, and to me the mini-game Skocko was the best part of it. So I decided to make my version of the game Skocko and here it is. Since the game is already available on mobile and web, I made a desktop version.
 
 ### Built With
