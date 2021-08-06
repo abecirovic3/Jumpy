@@ -2,13 +2,13 @@
 <br />
 <p align="center">
   <a href="https://github.com/abecirovic3/Jumpy">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/dices.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Jumpy</h3>
 
   <p align="center">
-    Jumpy is a simple puzzle game based on the game Skocko which is part of the game <a href=""><strong>Slagalica</strong></a>
+    Jumpy is a simple puzzle game based on the game Skocko which is part of the game <a href="https://play.google.com/store/apps/details?    id=com.solvus_lab.android.slagalica&hl=en&gl=US"><strong>Slagalica</strong></a>
 </p>
 
 
@@ -42,16 +42,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-dices]](https://example.com)
 
-When I was in highschool we my friends and I used to play Slagalica all the time, and to me the mini-game Skocko was the best part of it. So I decided to make my version of the game Skocko and here it is. Since the game is already available on mobile and web, I made a desktop version.
+When I was in highschool my friends and I used to play Slagalica all the time, and to me the mini-game Skocko was the best part of it. So I decided to make my version of the game Skocko and here it is. Since the game is already available on mobile and web, I made a desktop version.
 
 ### Built With
 
 Technologies used:
-* [JavaFx]
-* [FXML]
-* [CSS]
+* JavaFX
 
 
 
@@ -62,11 +60,8 @@ To play the game follow these steps.
 
 ### Prerequisites
 
-First you need java and javafx...
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+1. First you need to install java version 11 or later. Download JDK 11 [here](https://java.com/en/download/help/download_options.html).
+2. Download JavaFX [here](https://gluonhq.com/products/javafx/).
 
 ### Installation
 
@@ -78,7 +73,7 @@ First you need java and javafx...
    ```
 4. Run the folowing command
    ```sh
-   java --module-path %PATH-TO-JAVAFX-LIB --add-modules javafx.controls,javafx.fxml -jar Jumpy.jar
+   java --module-path %PATH-TO-JAVAFX-LIB% --add-modules javafx.controls,javafx.fxml -jar Jumpy.jar
    ```
    For example:
    ```sh
@@ -111,7 +106,7 @@ Distributed under the GNU General Public License, version 3. See `LICENSE` for m
 
 Ajdin Becirovic - [@Ajdin Becirovic](https://www.facebook.com/ajdin.becirovic.1/) - abecirovic3@etf.unsa.ba
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/abecirovic3/Jumpy)
+Project Link: [https://github.com/abecirovic3/Jumpy](https://github.com/abecirovic3/Jumpy)
 
 
 
