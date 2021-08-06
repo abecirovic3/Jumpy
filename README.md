@@ -8,7 +8,7 @@
   <h3 align="center">Jumpy</h3>
 
   <p align="center">
-    Jumpy is a simple puzzle game based on the game Skocko which is part of the game <a href="https://play.google.com/store/apps/details?    id=com.solvus_lab.android.slagalica&hl=en&gl=US"><strong>Slagalica</strong></a>
+    Jumpy is a simple puzzle game based on the game Skocko which is part of the game <a href="https://en.wikipedia.org/wiki/TV_Slagalica"><strong>Slagalica</strong></a>
 </p>
 
 
@@ -50,6 +50,7 @@ When I was in highschool my friends and I used to play Slagalica all the time, a
 
 Technologies used:
 * JavaFX
+* CSS
 
 
 
@@ -60,7 +61,7 @@ To play the game follow these steps.
 
 ### Prerequisites
 
-1. First you need to install java version 11 or later. Download JDK 11 [here](https://java.com/en/download/help/download_options.html).
+1. First you need to install java version 11 or later. Download JDK 11 [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
 2. Download JavaFX [here](https://gluonhq.com/products/javafx/).
 
 ### Installation
@@ -75,7 +76,7 @@ To play the game follow these steps.
    ```sh
    java --module-path %PATH-TO-JAVAFX-LIB% --add-modules javafx.controls,javafx.fxml -jar Jumpy.jar
    ```
-   For example:
+   Change `%PATH-TO-JAVAFX-LIB%` to the path of the lib directory in the javafx-sdk directory which you've downloaded earlier. For example:
    ```sh
    java --module-path C:\Users\UserName\Downloads\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml -jar Jumpy.jar
    ```
